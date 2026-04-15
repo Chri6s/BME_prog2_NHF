@@ -14,11 +14,6 @@
  *
  */
 
-#ifdef _MSC_VER
-// MSC ne adjon figyelmeztető üzenetet a C sztringkezelő függvényeire
-  #define _CRT_SECURE_NO_WARNINGS
-#endif
-
 #include <iostream>             // Kiíratáshoz
 #include <cstring>              // Sztringműveletekhez
 #include <cctype>

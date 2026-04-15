@@ -24,75 +24,7 @@
  * Egyes műveletvégző függvényekből pedig operátor függvény lesz.
  */
 
-/**
- * Az Ön feladata ebben fájlban bővíteni a megkezdett deklarációt, és string5.cpp
- * fájlban pedig megvalósítani (definiálni) az osztály egyes függvényeit úgy,
- * hogy az a lenti követelményeknek eleget tegyen.
- *
- * Ahogyan halad a megvalósítással egyre több tesztesetet kell lefuttatni,
- * ezért az ELKESZULT makró értéket folyamatosan növelje a feladatsorszámoknak
- * megfelelően!
- *
- * Tanulságos a megvalósítás előtt már a megnövelt értékkel is lefordítani
- * a programot, és elemezni a kapott hibajelzést.
- *
- */
-
-/**
- * Az ELKESZULT makró értékét a lenti feladatoknak megfelelően állítsa be,
- * azaz, sorban haladva ahol tart a feladatok megoldásában!
- * Ne hagyjon ki feladatot!
- */
-#define ELKESZULT 13
-
-/**
- * \section fel Feladat:
- * A 2. laborgyakorlaton létrehoztunk egy dinamikus sztring (String) adatszerkezet
- * és a rajta műveleteket végző függvényeket
- * A tanultakat felhasználva a string5.h és a string5.cpp állományokban definiáljon ill.
- * implementáljon egy olyan sztring (String) osztályt C++ nyelven, ami dinamikusan tárol
- * és rendelkezik az alábbi tulajdonságokkal:
- *
- *ELKESZULT értéke - feladatok:
- *  1  A paraméter nélkül hívható konstruktora üres sztringet hozzon létre!
- *     Van olyan tagfüggvénye ( size() ), ami visszaadja a sztring hosszát.
- *  2. Van olyan tagfüggvénye ( c_str() ), ami C-sztringgel, azaz nullával lezárt
- *     karaktersorozatra mutató pointerrel (const char *) tér vissza.
- *  3. Van olyan konstruktora, ami karakterből hoz létre sztringet.
- *  4. Van olyan konstruktora, ami C-sztringből (const char*) hoz létre sztringet.
- *  5. Az osztályból létrehozott objektum legyen átadható értékparaméterként!
- *  6. Támogassa a többszörös értékadást (b = a = a)!
- *  7. Legyenek olyan operátorai (operator+), amivel a sztring végéhez sztringet
- *     és karaktert is lehet fűzni!
- *  8. Lehessen karakterhez is sztringet fűzni a + operátorral!
- *  9. A tárolt a karakterek legyenek elérhetőek a szokásos módon indexeléssel!
- *     Az indexeléssel elért elem legyen használható balértékként is!
- *     A konstans objektumok is legyenek indexelhetők.
- *     Az indexelési hiba esetén dobjon const char * kivételt!
- * 10. Készítsen olyan << operátort, amivel egy sztring kiírható egy ostream típusú
- *     objektumra!
- *
- * Szorgalmi feladatok:
- * 11. Készítsen olyan fűzhető >> operátort, amivel be tud olvasni egy szót egy sztring-be!
- *     A beolvasó működjön úgy, mint a scanf %s, azaz a szó végét white space határolja!
- *     A szó eleji white space karaktereket pedig el kell dobni.
- *    *Megj: az istream wshite space kezelése a flags() tagfüggvénnyel szabályozható.
- * 12. Próbálja ki ékezetes szövegekkel is az elkészített String osztályt!
- *     Segítségül elkészítettünk egy egyszerű kódrészletet ami szavakat olvas be,
- *     majd qsort() függvénnyel rendezi azokat.
- *     Az ékezetes karakterek kódolásával kapcsolatban korábban már volt egy egyszerű
- *     szorgalmi feladat feladat. Most a rendezésen van a hangsúly.
- *     Értse meg a rendez.cpp fájlban levő kód működését és futtassa a programot!
- * 13. A setlocale függvényhívás beállítja a karakterek és sztringek összehasonlításához
- *     szükséges nyelvi környezetet (LC_COLLATE) próbálja ki! Változott a rendezési
- *     sorrend?
- */
-
 #include <iostream>
-
-#ifndef MEMTRACE
-#error "definialja projekt szinten a MEMTARCE makrot!"
-#endif // MEMTRACE
 
 /**
  * A String osztály.
@@ -118,17 +50,6 @@ public:
                   << (pData ? pData : "(NULL)") << '|' << std::endl;
     }
 
-/// Az első két feladatot előre megoldottuk, de lehet, hogy nem jól.
-/// Az üres sztring reprezentációja nem szerencsés, mert így NULL pointerré
-/// konvertál a c_str(), ami külön kezelést igényel a későbbiekben.
-/// Ezt a teszt program sem fogadja el.
-/// Gondolja végig, és változtassa meg!
-/// Két lehetőség van:
-///     a) nem NULL pointert tárol, hanem ténylegesen üres sztringet.
-///     b) NULL-t tárol, de a c_str() üres sztringet ad vissza helyette
-///        Ebben az esetben ügyelnie kell a másolásokra (másoló kostruktor op=) is,
-///        nehogy NULL pointert kapjon az strcpy!
-/// Bármelyik megoldás jó, mert ez az osztály belügye.
     String() :pData(0), len(0) {}
     String(char c);
     String(const char* chars);
@@ -146,15 +67,11 @@ public:
         return pData ? pData : "";
     }
 
-/// Itt folytassa a tagfüggvények deklarációit a feladatoknak megfelelően.
-/// ...
     String operator+(const String& rhs) const;
     String operator+(char rhs) const;
     char& operator[](const size_t idx) const;
 };
 
-/// Ide kerülnek a globális operátorok deklarációi.
-/// ...
 String operator+(char lhs, const String& rhs);
 std::ostream& operator<<(std::ostream& os, const String& s);
 std::istream& operator>>(std::istream& is, String& s);
