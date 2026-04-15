@@ -5,7 +5,8 @@ project(Sportkozpont CXX)
 #    message(FATAL_ERROR "Ne a mainben buildelj! csinalj egy build mappat: mkdir build && cd build && cmake ..")
 #endif()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 # Ide a library modulokat kulon definialni kell egyenkent, most meg csak placeholder
