@@ -12,10 +12,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 # Ide a library modulokat kulon definialni kell egyenkent, most meg csak placeholder
 add_subdirectory(libs/string)
 add_subdirectory(libs/memtrace)
+add_subdirectory(libs/vector)
 
 add_executable(sportkozpont src/main.cpp)
 
 # Itt a library modulokat kulon meg kell adni a linkernek
 target_link_libraries(sportkozpont PRIVATE string)
-
+target_link_libraries(sportkozpont PRIVATE memtrace)
+target_link_libraries(sportkozpont PRIVATE vector)
 
