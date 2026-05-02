@@ -12,7 +12,7 @@ public:
 	Vector() : data(NULL), size(0) {}
 
 	Vector(const Vector& other) : data(NULL), size(other.size) {
-		if (Size == 0) {
+		if (size == 0) {
 			return;
 		}
 
