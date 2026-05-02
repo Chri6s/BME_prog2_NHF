@@ -2,16 +2,17 @@
 #define SPORTCLUB_H
 
 #include "team.h"
+#include "vector.hpp"
 
-class Sportclub {
-        Team teams;
+class SportClub {
+    Vector<Team*> teams;
     public:
-        Sportclub();
-        bool addTeam();
-        bool deleteTeam();
-        void listTeam();
-        Team getTeam();
-        ~Sportclub();
+    SportClub();
+    bool addTeam(Team* team);
+    bool deleteTeam(int index);
+    void listTeams() const;
+    Team* getTeam(int index) const;
+    ~SportClub();
 };
 
 
