@@ -1,7 +1,7 @@
 #include "team.h"
 
 
-const String& Team::getName() const {
+String Team::getName() const {
     return teamName;
 }
 
