@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 add_subdirectory(libs/string)
 add_subdirectory(libs/memtrace)
 add_subdirectory(libs/vector)
+add_subdirectory(libs/gtest_lite)
 
 add_executable(sportkozpont src/main.cpp)
 
@@ -20,4 +21,4 @@ add_executable(sportkozpont src/main.cpp)
 target_link_libraries(sportkozpont PRIVATE string)
 target_link_libraries(sportkozpont PRIVATE memtrace)
 target_link_libraries(sportkozpont PRIVATE vector)
-
+target_link_libraries(sportkozpont PRIVATE gtest_lite)
